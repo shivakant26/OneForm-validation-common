@@ -39,7 +39,6 @@ export const Home = () => {
     setShow(false);
   };
   const getData = (val) => {
-    console.log(2222, val);
     setRecord([...record, val]);
   };
   console.log(record);
