@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Details.scss";
-import profileImage from "../assets/profile.jpg";
+import profileImage from "../../assets/profile.jpg";
 import { Col, Container, Row } from "react-bootstrap";
-import Experience from "../common/experience";
-import InputRange from "../common/range";
+import Experience from "../../Common/experience";
+import InputRange from "../../Common/range";
 
 
 const Details = () => {
