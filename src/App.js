@@ -1,13 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./component/Home";
+import Home from "./Component/Home/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Details from "./component/Details";
-import Header from "./common/header";
-import About from "./Pages/About";
-import Login from "./component/Login";
-import Dashboard from "./Pages/Dashboard";
+import Details from "./Component/Details/Details";
+import Header from "./Common/header";
+import About from "./Pages/About/About";
+import Login from "./Component/Login";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

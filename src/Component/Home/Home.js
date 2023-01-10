@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component, useState } from "react";
-import Card from "../common/card";
-import AddMoreModel from "../common/model";
-import './Home.scss';
+import Card from "../../Common/card";
+import AddMoreModel from "../../Common/model";
+import "./Home.scss";
 
 const developers = [
   { devloperName: "Gulshan Rajput", devloperDesignation: "React Developer" },
