@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser, userRegister} from "../Redux/siteReducer";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const {loginData, isLoading ,registerData} = useSelector((state)=>state);
+  console.log(123,registerData)
   const {
     register,
     handleSubmit,
@@ -15,13 +23,40 @@ const Login = () => {
   const onSubmit = (data , e) => {
     console.log(123456, e.target.innerText);
     if(e.target.innerText === 'लॉगिन करें'){
-      console.log("logindata",data)
+      dispatch(loginUser(data));
     }else{
-      console.log("RegisterData",data)
+      dispatch(userRegister(data))
     }
     reset({ userId: "", Password: "", userName: "" });
   };
 
+  useEffect(()=>{
+    if(loginData?.status === 200){
+      localStorage.setItem("token",loginData?.token)
+      toast.success(`${loginData?.message}`,{
+        toastId: "loginsuccess"
+      })
+      // navigate("/dashboard")
+      window.location.href = "/dashboard";
+    }else if(loginData.status === 404){
+      toast.error(`${loginData?.message}`,{
+        toastId: "loginerror"
+      })
+    }
+  },[loginData])
+
+  useEffect(()=>{
+    if(registerData?.status === 200){
+      toast.success(`${registerData?.message}`,{
+        toastId: "loginsuccess"
+      })
+      setIsLogin(true)
+    }else if(registerData.status === 404){
+      toast.error(`${registerData?.message}`,{
+        toastId: "loginerror"
+      })
+    }
+  },[registerData])
   return (
     <>
       <Container>
